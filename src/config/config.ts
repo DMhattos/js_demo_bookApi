@@ -2,22 +2,21 @@ import 'dotenv/config'
 import ConfigModel from './config.model'
 
 class Configuration implements ConfigModel {
-  dbUser!: string
-  dbPass!: string
-  port!: number
   constructor () {
     this.loadConfig()
   }
 
-  private loadConfig () : void {
-    const {
-      DB_USER,
-      DB_PASS,
-      PORT
+  dbName!: string
+  dbUser!: string
+  dbPass!: string
+  port!: number
 
-    } = process.env
+  private loadConfig () : void {
+    const { DB_USER, DB_PASS, DB_NAME, PORT } = process.env
+
     this.dbUser = DB_USER as string
     this.dbPass = DB_PASS as string
+    this.dbName = DB_NAME as string
     this.port = Number(PORT)
   }
 }
