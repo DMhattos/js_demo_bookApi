@@ -1,13 +1,17 @@
 import express from 'express'
 import cors from 'cors'
 import BaseController from './controllers/base.controller'
+import Configuration from './config/config'
+import ConfigModel from './config/config.model'
 
 class App {
   private app: express.Application
+  private config:ConfigModel
   constructor (controllers: BaseController[]) {
     this.app = express()
     this.initializeMiddlewares()
     this.initializeRoutes(controllers)
+    this.config = new Configuration()
   }
 
   private initializeMiddlewares () : void {
@@ -21,9 +25,9 @@ class App {
     })
   }
 
-  public listen (port: number) {
-    this.app.listen(port, () => {
-      console.log(`Server running at port:${port}`)
+  public listen () {
+    this.app.listen(this.config.port, () => {
+      console.log(`Server running at port:${this.config.port}`)
     })
   }
 }
