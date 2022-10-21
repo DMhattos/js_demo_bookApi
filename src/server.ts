@@ -1,8 +1,6 @@
 import BookController from './controllers/book.controller'
-import validateEnv from './utilities/validate.env'
-import App from './app'
 
-// validateEnv()
+import App from './app'
 
 const controllers = [
   new BookController()
