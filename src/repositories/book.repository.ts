@@ -10,7 +10,7 @@ class BookRepository {
     return await BookSchema.find({})
   }
 
-  async getBookById (id:string) : Promise<Book | null | undefined> {
+  async getBookById (id:string) : Promise<Book | null> {
     return await BookSchema.findById(id)
   }
 
